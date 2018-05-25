@@ -1,14 +1,25 @@
 <% include partials/header %>
 
-<div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1><%=campground.name%></h1>
-            <p><%=campground.description%></p>            
-        </div>
-    </header>
-    <p>
-        <img src="<%=campground.image%>" alt="">
-    </p>
-</div>
-<% include partials/footer %>
+    <div class="container" style="margin-bottom: 40px;">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>
+                    <%=campground.name%>
+                </h1>
+                <p>
+                    <%=campground.description%>
+                </p>
+            </div>
+        </header>
+        <p>
+            <img style="max-width: 100%" src="<%=campground.image%>" alt="">
+        </p>
+        <% campground.comments.forEach(function (comment){ %>
+            <p class="container">
+                <strong><%= comment.author %></strong> -
+                <%- comment.text%>
+            </p>
+            <% }) %>
+                <a href="/campground">Go back</a>
+    </div>
+    <% include partials/footer %>
