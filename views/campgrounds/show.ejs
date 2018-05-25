@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
     <div class="container" style="margin-bottom: 40px;">
         <header class="jumbotron">
@@ -14,6 +14,9 @@
         <p>
             <img style="max-width: 100%" src="<%=campground.image%>" alt="">
         </p>
+        <p>
+            <a href="/campground/<%= campground._id %>/comments/new" class="btn btn-lg btn-success btn-block" style="width: 200px;">New Comment</a>
+        </p>
         <% campground.comments.forEach(function (comment){ %>
             <p class="container">
                 <strong><%= comment.author %></strong> -
@@ -22,4 +25,4 @@
             <% }) %>
                 <a href="/campground">Go back</a>
     </div>
-    <% include partials/footer %>
+    <% include ../partials/footer %>
