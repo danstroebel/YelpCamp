@@ -13,7 +13,7 @@ const campgroundRoutes = require("./routes/campgrounds"),
     commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index");
 
-// seedDB();
+/* seedDB(); */
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
 
 app.use("/", indexRoutes);
 app.use("/campground", campgroundRoutes);
-app.use(commentRoutes);
+app.use("/campground/:id/comments", commentRoutes);
 
 
 app.listen(3000, function() {

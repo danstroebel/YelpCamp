@@ -12,11 +12,15 @@ router.get("/", function(req, res) {
     })
 });
 
-router.post("/", function(req, res) {
+router.post("/", isLoggedIn, function(req, res) {
     const name = req.body.name;
     const image = req.body.image;
     const description = req.body.description;
-    const newCampground = { name: name, image: image, description: description };
+    const author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    const newCampground = { name: name, image: image, description: description, author: author };
     Campground.create(newCampground, function(err, campground) {
         if (err) {
             console.log(err);
@@ -26,7 +30,7 @@ router.post("/", function(req, res) {
     });
 });
 
-router.get("/new", function(req, res) {
+router.get("/new", isLoggedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 
