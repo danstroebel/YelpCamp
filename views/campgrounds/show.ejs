@@ -14,7 +14,8 @@
                 <div class="thumbnail">
                     <img class="image-responsive" src="<%= campground.image%>">
                     <div class="caption-full">
-                        <h4 class="pull-right">$9.00/night</h4>
+                        <h4 class="pull-right">$
+                            <%= campground.cost %>/night</h4>
                         <h4>
                             <a href="">
                                 <%=campground.name%>
@@ -42,8 +43,8 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
-                                <strong><%= comment.author.username %></strong>
-                                <span class="pull-right">10 day ago</span>
+                                <strong><%= campground.author.username %></strong>
+                                <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                                 <p>
                                     <%- comment.text%>
                                 </p>

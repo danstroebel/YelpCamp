@@ -24,6 +24,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(flash());
+app.locals.moment = require('moment');
 
 // AUTH
 app.use(require("express-session")({
